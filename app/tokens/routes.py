@@ -1,6 +1,7 @@
+from flask import render_template
 from . import bp
 
 @bp.route('/')
-def generate_token():
+def index():
 
-    return 'This is the main Blueprint on the server-side of this project.'
+    return render_template('index.html')
