@@ -7,7 +7,59 @@
 <!-- app -->
 {% block app %}
 <!--  -->
-<h1>This is the login page</h1>
+<div class="m-6 p-6">
+  <form
+    class="mx-auto p-6"
+    method="post"
+    action="{{ url_for('main.login') }}"
+    style="width: 30rem"
+  >
+    <h2 class="is-size-4 mb-4 has-text-centered">Log in to your account</h2>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          class="input"
+          name="email"
+          type="email"
+          placeholder="Email"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="bi bi-envelope-fill"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          class="input"
+          name="password"
+          type="password"
+          placeholder="Password"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="bi bi-lock-fill"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <button class="button is-success" type="submit" style="width: 100%">
+          Login
+        </button>
+      </p>
+    </div>
+    <div class="field">
+      <p class="has-text-centered">
+        I don't have an
+        <a href="{{ url_for('main.signup') }}" class="is-underlined">account</a
+        >.
+      </p>
+    </div>
+    <div class="field">{% include 'notifications.html' %}</div>
+  </form>
+</div>
 <!--  -->
 {% endblock %}
 <!-- app -->

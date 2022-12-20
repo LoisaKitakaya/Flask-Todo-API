@@ -16,7 +16,7 @@
       <div class="navbar-brand">
         <a class="navbar-item" href="{{ url_for('main.index') }}">
           <h1
-            class="is-size-3 has-text-weight-semibold font-rubik has-text-info"
+            class="is-size-3 has-text-weight-semibold font-rubik"
           >
             Todo API
           </h1>
@@ -41,9 +41,6 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
             <div class="navbar-dropdown">
-              <a href="{{ url_for('main.about') }}" class="navbar-item">
-                About
-              </a>
               <a href="{{ url_for('main.contact') }}" class="navbar-item">
                 Contact
               </a>
@@ -66,10 +63,16 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a href="{{ url_for('main.signup') }}" class="button is-success">
+              <a
+                href="{{ url_for('main.signup') }}"
+                class="button is-primary is-light"
+              >
                 <strong>Sign up</strong>
               </a>
-              <a href="{{ url_for('main.login') }}" class="button is-warning">
+              <a
+                href="{{ url_for('main.login') }}"
+                class="button is-warning is-light"
+              >
                 Log in
               </a>
             </div>
