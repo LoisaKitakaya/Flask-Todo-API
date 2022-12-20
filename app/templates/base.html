@@ -33,8 +33,9 @@
       </div>
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item"> Generate token </a>
-          <a class="navbar-item"> Documentation </a>
+          <a href="{{ url_for('docs.docs') }}" class="navbar-item">
+            Documentation
+          </a>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
             <div class="navbar-dropdown">
@@ -52,7 +53,7 @@
               <a class="button is-primary">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light"> Log in </a>
+              <a class="button is-warning"> Log in </a>
             </div>
           </div>
         </div>
