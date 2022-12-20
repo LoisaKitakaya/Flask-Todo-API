@@ -2,7 +2,7 @@ from flask import Flask
 from config import Config
 
 # extensions
-from app.extensions import db, migrate
+from app.extensions import db, migrate, login_manager
 
 # blueprints
 from app.main import bp as main_bp
@@ -22,9 +22,15 @@ def create_app(config_class=Config):
     # initialize flask extensions
     db.init_app(app)
     migrate.init_app(app, db)
+    login_manager.init_app(app)
 
     # register app blueprints
     app.register_blueprint(main_bp)
     app.register_blueprint(docs_bp)
+
+    # login manager callback
+    @login_manager.user_loader
+    def load_user(public_id):
+        return User.query.get(public_id)
 
     return app

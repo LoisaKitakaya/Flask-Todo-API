@@ -5,23 +5,23 @@
 {% for category, message in messages %}
 <!--  -->
 {% if category == 'message' %}
-<div class="notification is-success">
-  <button class="delete"></button>
+<div class="notification is-success is-light" id="flash-box">
+  <button class="delete" onclick="clearNotification()"></button>
   {{ message }}
 </div>
 {% elif category == 'info' %}
-<div class="notification is-info">
-  <button class="delete"></button>
+<div class="notification is-info is-light" id="flash-box">
+  <button class="delete" onclick="clearNotification()"></button>
   {{ message }}
 </div>
 {% elif category == 'warning' %}
-<div class="notification is-warning">
-  <button class="delete"></button>
+<div class="notification is-warning is-light" id="flash-box">
+  <button class="delete" onclick="clearNotification()"></button>
   {{ message }}
 </div>
 {% elif category == 'error' %}
-<div class="notification is-danger">
-  <button class="delete"></button>
+<div class="notification is-danger is-light" id="flash-box">
+  <button class="delete" onclick="clearNotification()"></button>
   {{ message }}
 </div>
 {% endif %}
