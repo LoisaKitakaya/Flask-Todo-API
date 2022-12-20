@@ -8,50 +8,46 @@
 {% block app %}
 <!--  -->
 <div class="m-6 p-5">
-  <div class="card-content">
-    <div class="content is-size-5 has-text-centered">
-      <h1 class="is-size-3 font-rubik">Todo API</h1>
-      <h2
-        class="is-size-4 is-underlined is-italic has-text-weight-light has-text-grey"
+  <div class="is-size-5 has-text-centered">
+    <h1 class="is-size-3 font-rubik">Todo API</h1>
+    <h2
+      class="is-size-4 is-underlined is-italic has-text-weight-light has-text-grey"
+    >
+      Simple Todo backend for your desired frontend
+    </h2>
+    <br />
+    <p>
+      Create, read, update, and delete todos all from an easy-to-use API.
+      Includes user account functionality. Just provide an email and you should
+      receive your api key in your inbox a few moments later. To know more about
+      this project check out the
+      <a
+        href="https://github.com/LoisaKitakaya/Flask-Todo-API"
+        class="is-underlined"
+        >source code</a
       >
-        Simple Todo backend for your desired frontend
-      </h2>
-      <br />
-      <p>
-        Create, read, update, and delete todos all from an easy-to-use API.
-        Includes user account functionality. Just provide an email and you
-        should receive your api key in your inbox a few moments later. To know
-        more about this project check out the
-        <a
-          href="https://github.com/LoisaKitakaya/Flask-Todo-API"
-          class="is-underlined"
-          >source code</a
-        >
-        on GitHub. Sign up today!
-      </p>
-      <br />
-      <p>
-        The purpose of this API is one, to give developers an opportunity to
-        play around with bearer token authentication. Second, is to offer
-        developers the freedom of designing their own frontend applications
-        without worrying much about what's under the hood. There is currently a
-        limit of 100 general todos per user account.
-      </p>
-      <br />
-      <div
-        class="is-flex is-flex-wrap-wrap is-justify-content-center is-align-items-center"
+      on GitHub. Sign up today!
+    </p>
+    <br />
+    <p>
+      The purpose of this API is one, to give developers an opportunity to play
+      around with bearer token authentication. Second, is to offer developers
+      the freedom of designing their own frontend applications without worrying
+      much about what's under the hood. There is currently a limit of 100
+      general todos per user account.
+    </p>
+    <br />
+    <div
+      class="is-flex is-flex-wrap-wrap is-justify-content-center is-align-items-center"
+    >
+      <a
+        href="{{ url_for('main.generate_token') }}"
+        class="button is-link mx-2 is-light"
+        >Get started</a
       >
-        <a
-          href="{{ url_for('main.generate_token') }}"
-          class="button is-link mx-2 is-light"
-          >Get started</a
-        >
-        <a
-          href="{{ url_for('docs.docs') }}"
-          class="button is-link mx-2 is-light"
-          >Read the docs</a
-        >
-      </div>
+      <a href="{{ url_for('docs.docs') }}" class="button is-link mx-2 is-light"
+        >Read the docs</a
+      >
     </div>
   </div>
 </div>

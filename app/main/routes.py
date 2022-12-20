@@ -127,4 +127,8 @@ def logout():
 @login_required
 def generate_token():
 
+    if request.method == 'POST':
+
+        return 'generating token'
+
     return render_template('generate_token.html', current_user=current_user)

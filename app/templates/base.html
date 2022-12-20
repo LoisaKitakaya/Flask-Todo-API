@@ -66,9 +66,9 @@
                 href="{{ url_for('main.logout') }}"
                 class="button is-danger is-light"
               >
-                Log out
-            </a>
-            {% else %}
+                <strong>Log out</strong>
+              </a>
+              {% else %}
               <a
                 href="{{ url_for('main.signup') }}"
                 class="button is-primary is-light"
@@ -79,7 +79,7 @@
                 href="{{ url_for('main.login') }}"
                 class="button is-warning is-light"
               >
-                Log in
+                <strong>Log in</strong>
               </a>
               {% endif %}
             </div>

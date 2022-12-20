@@ -7,7 +7,35 @@
 <!-- app -->
 {% block app %}
 <!--  -->
-<h1>This is the generate token page</h1>
+<div class="m-6 p-5">
+  <div class="is-size-5 has-text-centered">
+    <h1 class="is-size-3 font-rubik">Todo API</h1>
+    <br />
+    <p class="is-size-4 has-text-weight-light">
+      Click the button to generate your access token.
+    </p>
+    <br />
+    <p class="has-text-weight-light">
+      The generated token will be sent to the email '
+      <strong>{{ current_user.email }}</strong>
+      '.
+    </p>
+    <br />
+    <form
+      method="post"
+      action="{{ url_for('main.generate_token') }}"
+      class="mx-auto mb-6"
+    >
+      <button type="submit" class="button is-primary" style="width: 20rem">
+        Generate token
+      </button>
+    </form>
+    <br />
+  </div>
+  <div class="mx-auto" style="width: 50rem">
+    {% include 'notifications.html' %}
+  </div>
+</div>
 <!--  -->
 {% endblock %}
 <!-- app -->
