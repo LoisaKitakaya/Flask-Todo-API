@@ -2,12 +2,16 @@ from flask import Flask
 from config import Config
 
 # extensions
-from app.extensions import db
+from app.extensions import db, migrate
 
 # blueprints
 from app.main import bp as main_bp
 from app.docs import bp as docs_bp
 from app.tokens import bp as tokens_bp
+
+# app models
+from app.models.users import User
+from app.models.todo import Todo
 
 # app factory
 
@@ -18,6 +22,7 @@ def create_app(config_class=Config):
 
     # initialize flask extensions
     db.init_app(app)
+    migrate.init_app(app, db)
 
     # register app blueprints
     app.register_blueprint(main_bp)
