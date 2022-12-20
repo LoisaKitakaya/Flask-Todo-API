@@ -1,6 +1,9 @@
 from flask import Flask
 from config import Config
 
+# extensions
+from app.extensions import db
+
 # blueprints
 from app.main import bp as main_bp
 from app.docs import bp as docs_bp
@@ -14,6 +17,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     # initialize flask extensions
+    db.init_app(app)
 
     # register app blueprints
     app.register_blueprint(main_bp)
