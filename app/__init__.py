@@ -2,7 +2,7 @@ from flask import Flask
 from config import Config
 
 # blueprints
-from app.tokens import bp as token_bp
+from app.main import bp as main_bp
 
 # app factory
 
@@ -14,6 +14,6 @@ def create_app(config_class=Config):
     # initialize flask extensions
 
     # register app blueprints
-    app.register_blueprint(token_bp)
+    app.register_blueprint(main_bp)
 
     return app
