@@ -1,3 +1,4 @@
+import json
 from flask_restful import Resource, abort
 from flask import request
 from app.models.users import User
@@ -70,6 +71,36 @@ class TodoEndpoint(Resource):
             abort(404, message='Task not found.')
 
         else:
+
+            this_task = todo_schema.dump(task)
+
+        return {'data': {
+            'owner': current_user.public_id,
+            'payload': this_task
+        }}, 200
+
+    @token_required
+    def patch(self, current_user, task_id):
+
+        try:
+
+            task = Todo.query.filter_by(
+                id=int(task_id), user_id=current_user.id
+            ).first()
+
+        except:
+
+            abort(404, message='Task not found.')
+
+        else:
+
+            update = request.get_json()
+
+            task.complete = True if update['complete'] == 'true' else False
+
+            print(update)
+
+            db.session.commit()
 
             this_task = todo_schema.dump(task)
 
