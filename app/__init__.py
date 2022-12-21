@@ -28,6 +28,8 @@ def create_app(config_class=Config):
     # register app blueprints
     app.register_blueprint(main_bp)
 
+    # register api endpoints
+
     # login manager callback
     @login_manager.user_loader
     def load_user(id):
