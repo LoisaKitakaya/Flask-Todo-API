@@ -156,7 +156,7 @@ def generate_token():
 
         try:
 
-            UserToken.query.delete()
+            db.session.delete(UserToken.query.filter_by(user_id=current_user.id).first())
 
         except:
 
