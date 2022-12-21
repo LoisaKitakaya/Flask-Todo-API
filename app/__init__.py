@@ -13,7 +13,7 @@ from app.models.users import User, UserToken
 from app.models.todo import Todo
 
 # api endpoints
-from app.api.endpoints import UserEndpoint, UserTokenEndpoint, TokenEndpoint
+from app.api.endpoints import UserEndpoint, TodoEndpoint, AllTodosEndpoint
 
 # app factory
 def create_app(config_class=Config):
@@ -36,8 +36,8 @@ def create_app(config_class=Config):
 
     # register api endpoints
     api.add_resource(UserEndpoint, '/api/user/')
-    api.add_resource(UserTokenEndpoint, '/api/user_token/')
-    api.add_resource(TokenEndpoint, '/api/todo/')
+    api.add_resource(AllTodosEndpoint, '/api/all_todo/')
+    api.add_resource(TodoEndpoint, '/api/todo/<task_id>/')
 
     # login manager callback
     @login_manager.user_loader
