@@ -16,11 +16,6 @@ def index():
 
     return render_template('index.html')
 
-@bp.route('/contact/', methods=['GET', 'POST'])
-def contact():
-
-    return render_template('contact.html')
-
 @bp.route('/signup/', methods=['GET', 'POST'])
 def signup():
 
@@ -128,7 +123,7 @@ def logout():
     flash("Logged out successfully.", "message")
     return redirect(url_for('main.login'))
 
-@bp.route('/generate_token/', methods=['GET', 'POST'])
+@bp.route('/tokens/', methods=['GET', 'POST'])
 @login_required
 def generate_token():
 
