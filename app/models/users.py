@@ -10,7 +10,20 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(254))
     todos = db.relationship('Todo', backref='user')
+    tokens = db.relationship('UserToken', backref='user')
 
     def __repr__(self) -> str:
         
         return f'<User: "{self.username}">'
+
+class UserToken(db.Model):
+
+    __tablename__ = 'tokens'
+
+    id = db.Column(db.Integer, primary_key=True)
+    token = db.Column(db.String(256))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __repr__(self) -> str:
+        
+        return f'<UserToken: "{self.token}">'

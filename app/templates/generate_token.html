@@ -11,29 +11,65 @@
   <div class="is-size-5 has-text-centered">
     <h1 class="is-size-3 font-rubik">Todo API</h1>
     <br />
+    <div class="mx-auto pos" style="width: 50rem">
+      {% include 'notifications.html' %}
+    </div>
     <p class="is-size-4 has-text-weight-light">
       Click the button to generate your access token.
     </p>
     <br />
     <p class="has-text-weight-light">
-      The generated token will be sent to the email '
+      Logged in as: '
       <strong>{{ current_user.email }}</strong>
-      '.
+      '. <br />
+      Remember to keep your access token a secret.
     </p>
+    <br />
+    {% if user_token %}
+    <div class="field mx-auto" style="width: 60%">
+      <div class="control">
+        <textarea
+          class="textarea jwt-token"
+          id="secret"
+          readonly
+          onclick="copyContent()"
+        >
+        {{ user_token.token }}
+        </textarea>
+        <span id="token">{{ user_token.token }}</span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox" onclick="toggleFunc()" />
+          Show token
+          <span class="has-text-weight-light has-text-grey"
+            >(click on the textbox to copy)</span
+          >
+        </label>
+      </div>
+    </div>
+    {% else %}
+    <div class="field mx-auto" style="width: 60%">
+      <div class="control">
+        <textarea class="textarea has-text-centered has-text-grey" readonly>
+        You haven't generated a token yet.
+        </textarea>
+      </div>
+    </div>
+    {% endif %}
     <br />
     <form
       method="post"
       action="{{ url_for('main.generate_token') }}"
-      class="mx-auto mb-6"
+      class="mx-auto"
     >
       <button type="submit" class="button is-primary" style="width: 20rem">
         Generate token
       </button>
     </form>
     <br />
-  </div>
-  <div class="mx-auto" style="width: 50rem">
-    {% include 'notifications.html' %}
   </div>
 </div>
 <!--  -->

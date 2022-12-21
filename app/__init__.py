@@ -9,7 +9,7 @@ from app.main import bp as main_bp
 from app.docs import bp as docs_bp
 
 # app models
-from app.models.users import User
+from app.models.users import User, UserToken
 from app.models.todo import Todo
 
 # app factory
@@ -30,7 +30,7 @@ def create_app(config_class=Config):
 
     # login manager callback
     @login_manager.user_loader
-    def load_user(public_id):
-        return User.query.get(public_id)
+    def load_user(id):
+        return User.query.get(int(id))
 
     return app

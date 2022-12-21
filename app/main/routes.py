@@ -1,11 +1,15 @@
 import re
+import os
+import jwt
+import smtplib
 from . import bp
 from uuid import uuid4
+from functools import wraps
 from app.extensions import db
-from app.models.users import User
+from app.models.users import User, UserToken
 from flask import render_template, redirect, url_for, flash, request
-from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, logout_user, login_required, current_user
 
 @bp.route('/')
 def index():
@@ -68,7 +72,8 @@ def signup():
 
         except:
 
-            raise
+            flash('Something went wrong.', 'error')
+            return None
 
         else:
             
@@ -127,8 +132,59 @@ def logout():
 @login_required
 def generate_token():
 
+    KEY = os.environ.get('SECRET_KEY')
+
+    try:
+
+        has_token = UserToken.query.filter_by(user_id=current_user.id).first()
+
+    except:
+
+        user_token = None
+
+    else:
+
+        user_token = has_token
+
     if request.method == 'POST':
 
-        return 'generating token'
+        access_token = jwt.encode(
+            {'public_id': current_user.public_id},
+            str(KEY),
+            algorithm="HS256"
+        )
 
-    return render_template('generate_token.html', current_user=current_user)
+        try:
+
+            UserToken.query.delete()
+
+        except:
+
+            pass
+
+        else:
+
+            db.session.commit()
+
+        new_token = UserToken(
+            token=str(access_token),
+            user_id=current_user.id
+        )
+
+        try:
+
+            db.session.add(new_token)
+
+        except:
+
+            raise
+
+        else:
+
+            db.session.commit()
+            flash('Your token has been generated.', 'message')
+
+        return redirect(url_for('main.generate_token'))
+
+    return render_template('generate_token.html',\
+        current_user=current_user, user_token=user_token)

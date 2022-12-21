@@ -23,3 +23,22 @@ html {
 .font-rubik {
   font-family: "Rubik Vinyl", cursive !important;
 }
+
+.jwt-token {
+  color: transparent;
+  text-shadow: 0 0 8px #000;
+}
+
+#token {
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: hidden !important;
+  font-size: xx-small !important;
+}
+
+.pos {
+  position: absolute !important;
+  top: 8rem !important;
+  right: 20% !important;
+  z-index: 99 !important;
+}
