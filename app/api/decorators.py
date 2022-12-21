@@ -11,9 +11,9 @@ def token_required(func):
 
         token = None
         
-        if 'x-access-token' in request.headers:
+        if 'x-api-key' in request.headers:
 
-            token = request.headers['x-access-token']
+            token = request.headers['x-api-key']
 
         if not token:
 

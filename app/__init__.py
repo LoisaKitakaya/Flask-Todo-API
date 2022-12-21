@@ -36,7 +36,7 @@ def create_app(config_class=Config):
 
     # register api endpoints
     api.add_resource(UserEndpoint, '/api/user/')
-    api.add_resource(AllTodosEndpoint, '/api/all_todo/')
+    api.add_resource(AllTodosEndpoint, '/api/todo/')
     api.add_resource(TodoEndpoint, '/api/todo/<task_id>/')
 
     # login manager callback

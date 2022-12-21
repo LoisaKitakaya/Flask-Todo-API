@@ -7,8 +7,8 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     public_id = db.Column(db.String(256), unique=True)
-    email = db.Column(db.String(100), unique=True)
-    password = db.Column(db.String(254))
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(254), nullable=False)
     todos = db.relationship('Todo', backref='user')
     tokens = db.relationship('UserToken', backref='user')
 
