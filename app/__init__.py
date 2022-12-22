@@ -1,6 +1,7 @@
 from flask import Flask
 from config import Config
 from flask_restful import Api
+from flask_cors import CORS
 
 # extensions
 from app.extensions import db, ma, migrate, login_manager
@@ -21,7 +22,8 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # entry point for flask restful
+    
+    CORS(app)
     api = Api(app)
 
     # initialize flask extensions
